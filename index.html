@@ -662,11 +662,6 @@
         <textarea name="idea" placeholder="Describe your vision — subject, style, colors, placement on your body, size..." style="min-height:100px;" required></textarea>
       </label>
       <label>
-        Reference Photo(s)
-        <input type="file" name="referencePhotos" accept="image/*" multiple style="padding:10px 16px; cursor:pointer;" />
-        <span style="font-size:0.75rem;color:var(--muted);font-family:Inter,sans-serif;letter-spacing:0;text-transform:none;">Optional — upload any inspiration images (JPG, PNG, etc.)</span>
-      </label>
-      <label>
         Timeline — When Do You Want This Done?
         <select name="timeline" required>
           <option value="" disabled selected>Select a timeframe</option>
@@ -728,8 +723,6 @@
       idea:        fd.get('idea'),
       timeline:    fd.get('timeline'),
       submittedAt: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
-      referencePhotos: Array.from(fd.getAll('referencePhotos'))
-                          .map(f => f.name).filter(Boolean).join(', ') || 'None'
     };
 
     try {
