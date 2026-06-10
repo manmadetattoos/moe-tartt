@@ -27,7 +27,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -61,7 +61,7 @@
     }
     .nav-cta:hover { background: #f0b030; transform: translateY(-1px); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -171,7 +171,7 @@
       margin-top: 6px;
     }
 
-    /* ── STYLE BADGES ── */
+    /* STYLE BADGES */
     .style-bar {
       background: var(--dark);
       border-top: 1px solid #1f1f1f;
@@ -199,7 +199,7 @@
       border: 1px solid rgba(232,160,32,0.3);
     }
 
-    /* ── SECTION HEADINGS ── */
+    /* SECTION HEADINGS */
     .section {
       padding: 100px 48px;
     }
@@ -220,7 +220,7 @@
       max-width: 700px;
     }
 
-    /* ── GALLERY ── */
+    /* GALLERY */
     .gallery-section {
       padding: 100px 48px;
     }
@@ -269,22 +269,7 @@
       padding: 4px 10px;
     }
 
-    /* Placeholder gallery items with colors matching Moe's palette */
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gp-1 { background: linear-gradient(135deg, #1a0a0a 0%, #3d1010 40%, #c8292a 100%); }
-    .gp-2 { background: linear-gradient(135deg, #0a0f1a 0%, #0d2040 40%, #1a4a8a 100%); }
-    .gp-3 { background: linear-gradient(135deg, #0f1a0a 0%, #1a3d10 40%, #2a6a20 100%); }
-    .gp-4 { background: linear-gradient(135deg, #1a1500 0%, #3d3000 40%, #e8a020 100%); }
-    .gp-5 { background: linear-gradient(135deg, #15001a 0%, #30004a 40%, #8020c8 100%); }
-    .gp-6 { background: linear-gradient(135deg, #001a15 0%, #004a30 40%, #20c870 100%); }
-
-    /* ── ABOUT ── */
+    /* ABOUT */
     .about-section {
       padding: 100px 48px;
       display: grid;
@@ -307,25 +292,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-    }
-    .about-frame-inner {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      padding: 40px;
-    }
-    .about-initials {
-      font-family: 'Oswald', sans-serif;
-      font-size: 6rem;
-      font-weight: 700;
-      color: var(--gold);
-      opacity: 0.15;
-      line-height: 1;
     }
     .about-badge {
       position: absolute;
@@ -363,7 +329,7 @@
       font-style: italic;
     }
 
-    /* ── LEAD FORM ── */
+    /* LEAD FORM */
     .form-section {
       background: var(--dark);
       border-top: 1px solid #1f1f1f;
@@ -447,7 +413,6 @@
       margin-top: 4px;
     }
 
-    /* Success message */
     .success-msg {
       display: none;
       background: rgba(232,160,32,0.1);
@@ -459,7 +424,7 @@
       color: var(--gold);
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       padding: 48px;
       display: flex;
@@ -497,7 +462,7 @@
     }
     .footer-links a:hover { color: var(--gold); }
 
-    /* ── SCROLL ANIMATION ── */
+    /* SCROLL ANIMATION */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -508,7 +473,7 @@
       transform: translateY(0);
     }
 
-    /* ── DIVIDER ── */
+    /* DIVIDER */
     .gold-line {
       width: 60px;
       height: 3px;
@@ -559,7 +524,7 @@
       <div class="stat-label">Custom Work</div>
     </div>
     <div>
-      <div class="stat-number">🥊</div>
+      <div class="stat-number">&#x1F94A;</div>
       <div class="stat-label">Golden Gloves Champ</div>
     </div>
   </div>
@@ -581,60 +546,57 @@
   <h2 class="section-title fade-up">Tattoos That<br/>Speak for Themselves</h2>
 
   <div class="gallery-grid">
-    <!-- Gallery items — replace src="" with actual image paths when hosting -->
     <div class="gallery-item fade-up">
-      <img src="https://placehold.co/600x600/1a0a0a/e8a020?text=Jigglypuff+Swirl" alt="Neo-traditional Jigglypuff tattoo" onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex'" />
-      <div class="gallery-placeholder gp-5" style="display:none; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.4);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo1.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">Neo-Traditional</span></div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-placeholder gp-1" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo2.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">New School</span></div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-placeholder gp-4" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo3.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">American Traditional</span></div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-placeholder gp-3" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo4.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">Color Work</span></div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-placeholder gp-2" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo5.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">Anime-Inspired</span></div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-placeholder gp-6" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
-        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
-      </div>
+      <img src="photo6.png" alt="Moe Tartt tattoo" />
       <div class="gallery-overlay"><span class="gallery-tag">Neo-Traditional</span></div>
     </div>
+    <div class="gallery-item fade-up">
+      <img src="photo7.png" alt="Moe Tartt tattoo" />
+      <div class="gallery-overlay"><span class="gallery-tag">Color Work</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="photo8.jpg" alt="Moe Tartt tattoo" />
+      <div class="gallery-overlay"><span class="gallery-tag">New School</span></div>
+    </div>
   </div>
-  <p style="margin-top:24px; font-size:0.85rem; color:var(--muted); text-align:center;">
-    📸 Drop in your tattoo photos to replace the placeholder tiles above
-  </p>
+</section>
+
+<!-- VIDEO REEL -->
+<section style="padding: 80px 48px; background: var(--dark); border-top: 1px solid #1f1f1f; border-bottom: 1px solid #1f1f1f;">
+  <div class="section-eyebrow fade-up">In Action</div>
+  <h2 class="section-title fade-up" style="margin-bottom: 48px;">Watch Moe Work</h2>
+  <div class="fade-up" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; max-width: 1000px;">
+    <video controls playsinline muted loop style="width:100%; aspect-ratio:9/16; object-fit:cover; background:#111; border: 1px solid #222;">
+      <source src="tattoo-reel.mov" type="video/mp4">
+    </video>
+  </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-visual fade-up">
     <div class="about-frame">
-      <div class="about-frame-inner">
-        <div class="about-initials">MT</div>
-        <p style="font-family:Oswald;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:center;">
-          Add artist photo here
-        </p>
-      </div>
+      <img src="moe-photo.jpg" alt="Moe Tartt tattooing" style="width:100%;height:100%;object-fit:cover;" />
     </div>
     <div class="about-badge">
       Golden Gloves<br/>Champion<br/>Turned Artist
@@ -672,7 +634,7 @@
     <p>
       Ready to get something bold and built to last? Fill out the form and Moe will reach out to talk through your idea, size, placement, and schedule a date.
     </p>
-    <p class="warning">⚡ Spots fill fast. Don't sleep on it.</p>
+    <p class="warning">&#x26A1; Spots fill fast. Don't sleep on it.</p>
   </div>
 
   <div class="fade-up">
@@ -697,7 +659,7 @@
       </label>
       <label>
         What Do You Want Tattooed?
-        <textarea name="idea" placeholder="Describe your vision — subject, style, colors, placement on your body, size…" style="min-height:100px;" required></textarea>
+        <textarea name="idea" placeholder="Describe your vision — subject, style, colors, placement on your body, size..." style="min-height:100px;" required></textarea>
       </label>
       <label>
         Reference Photo(s)
@@ -710,16 +672,16 @@
           <option value="" disabled selected>Select a timeframe</option>
           <option>ASAP — as soon as Moe has an opening</option>
           <option>Within 1 month</option>
-          <option>Within 2–3 months</option>
+          <option>Within 2-3 months</option>
           <option>Within 6 months</option>
           <option>No rush — flexible</option>
         </select>
       </label>
-      <button type="submit" class="form-submit">Send My Booking Request →</button>
-      <p class="form-note">Moe will follow up within 24–48 hours · <a href="https://instagram.com/pro_moe_tattoos" target="_blank" style="color:var(--gold);text-decoration:none;">@pro_moe_tattoos</a></p>
+      <button type="submit" class="form-submit">Send My Booking Request</button>
+      <p class="form-note">Moe will follow up within 24-48 hours · <a href="https://instagram.com/pro_moe_tattoos" target="_blank" style="color:var(--gold);text-decoration:none;">@pro_moe_tattoos</a></p>
     </form>
     <div class="success-msg" id="successMsg">
-      ✔ Request received! Moe will be in touch shortly.
+      Request received! Moe will be in touch shortly.
     </div>
   </div>
 </section>
@@ -728,7 +690,7 @@
 <footer>
   <div>
     <div class="footer-brand">Moe Tartt</div>
-    <div class="footer-sub">45½ E Genesee St, Baldwinsville, NY 13027</div>
+    <div class="footer-sub">45 1/2 E Genesee St, Baldwinsville, NY 13027</div>
   </div>
   <div class="footer-links">
     <a href="https://instagram.com/pro_moe_tattoos" target="_blank">@pro_moe_tattoos</a>
@@ -739,7 +701,6 @@
 </footer>
 
 <script>
-  // Scroll fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -750,16 +711,14 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Form submission — posts to Zapier webhook → Google Sheets
   async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById('bookingForm');
     const btn = form.querySelector('.form-submit');
 
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    // Collect text fields
     const fd = new FormData(form);
     const data = {
       firstName:   fd.get('firstName'),
@@ -769,13 +728,11 @@
       idea:        fd.get('idea'),
       timeline:    fd.get('timeline'),
       submittedAt: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
-      // Reference photos: list filenames (actual files need Google Drive via Zapier)
       referencePhotos: Array.from(fd.getAll('referencePhotos'))
                           .map(f => f.name).filter(Boolean).join(', ') || 'None'
     };
 
     try {
-      // 🔧 REPLACE THIS URL with your Zapier "Catch Hook" webhook URL
       const WEBHOOK_URL = 'YOUR_ZAPIER_WEBHOOK_URL_HERE';
 
       await fetch(WEBHOOK_URL, {
@@ -788,7 +745,7 @@
       form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
     } catch (err) {
-      btn.textContent = 'Send My Booking Request →';
+      btn.textContent = 'Send My Booking Request';
       btn.disabled = false;
       alert('Something went wrong. Please try again or DM @pro_moe_tattoos on Instagram.');
     }
