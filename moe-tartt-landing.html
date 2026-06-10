@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moe Tartt — Tattoo Artist | The Grounded Art Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #181818;
+      --gold: #e8a020;
+      --red: #c8292a;
+      --white: #f5f0e8;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-cta {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 10px 24px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #f0b030; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,160,32,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(200,41,42,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 700;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      max-width: 900px;
+    }
+    .hero-name span {
+      display: block;
+      color: var(--gold);
+    }
+    .hero-tagline {
+      margin-top: 32px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #aaa;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .hero-tagline strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+    .hero-actions {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 16px 40px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #f0b030; transform: translateY(-2px); }
+    .btn-secondary {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      background: transparent;
+      padding: 16px 40px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      margin-top: 80px;
+      display: flex;
+      gap: 60px;
+    }
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── STYLE BADGES ── */
+    .style-bar {
+      background: var(--dark);
+      border-top: 1px solid #1f1f1f;
+      border-bottom: 1px solid #1f1f1f;
+      padding: 20px 48px;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .style-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .style-badge {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 6px 16px;
+      border: 1px solid rgba(232,160,32,0.3);
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section {
+      padding: 100px 48px;
+    }
+    .section-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      max-width: 700px;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section {
+      padding: 100px 48px;
+    }
+    .gallery-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 3px;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+      background: var(--card);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      filter: saturate(0.9);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.1);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(0,0,0,0.7);
+      padding: 4px 10px;
+    }
+
+    /* Placeholder gallery items with colors matching Moe's palette */
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gp-1 { background: linear-gradient(135deg, #1a0a0a 0%, #3d1010 40%, #c8292a 100%); }
+    .gp-2 { background: linear-gradient(135deg, #0a0f1a 0%, #0d2040 40%, #1a4a8a 100%); }
+    .gp-3 { background: linear-gradient(135deg, #0f1a0a 0%, #1a3d10 40%, #2a6a20 100%); }
+    .gp-4 { background: linear-gradient(135deg, #1a1500 0%, #3d3000 40%, #e8a020 100%); }
+    .gp-5 { background: linear-gradient(135deg, #15001a 0%, #30004a 40%, #8020c8 100%); }
+    .gp-6 { background: linear-gradient(135deg, #001a15 0%, #004a30 40%, #20c870 100%); }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 100px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .about-section { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--card);
+      border: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .about-frame-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 40px;
+    }
+    .about-initials {
+      font-family: 'Oswald', sans-serif;
+      font-size: 6rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .about-text p:last-of-type { margin-bottom: 0; }
+    .about-text strong { color: var(--white); }
+    .about-highlight {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 16px 24px;
+      border-left: 3px solid var(--gold);
+      background: rgba(232,160,32,0.05);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--white);
+      font-style: italic;
+    }
+
+    /* ── LEAD FORM ── */
+    .form-section {
+      background: var(--dark);
+      border-top: 1px solid #1f1f1f;
+      border-bottom: 1px solid #1f1f1f;
+      padding: 100px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .form-section { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .form-intro p {
+      margin-top: 24px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #999;
+      max-width: 400px;
+    }
+    .form-intro .warning {
+      margin-top: 24px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    input, select, textarea {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+    select option { background: #1a1a1a; }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      border: none;
+      padding: 18px 40px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #f0b030; transform: translateY(-2px); }
+    .form-submit:active { transform: translateY(0); }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      background: rgba(232,160,32,0.1);
+      border: 1px solid var(--gold);
+      padding: 20px;
+      text-align: center;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid #1f1f1f;
+    }
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── DIVIDER ── */
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-stats { gap: 32px; flex-wrap: wrap; }
+      .section, .gallery-section, .about-section, .form-section { padding: 64px 24px; }
+      .style-bar { padding: 16px 24px; gap: 16px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Moe Tartt</div>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">The Grounded Art Collective · Baldwinsville, NY</div>
+  <h1 class="hero-name">
+    Moe<br/>
+    <span>Tartt</span>
+  </h1>
+  <p class="hero-tagline">
+    <strong>Former Golden Gloves boxing champion.</strong> Now putting that same fire, focus, and fighter energy into every piece of ink.
+    Bold colors. Thick lines. Tattoos that hit hard.
+  </p>
+  <div class="hero-actions">
+    <a href="#book" class="btn-primary">Book Your Session</a>
+    <a href="#work" class="btn-secondary">See the Work</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-number">3+</div>
+      <div class="stat-label">Styles Mastered</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Custom Work</div>
+    </div>
+    <div>
+      <div class="stat-number">🥊</div>
+      <div class="stat-label">Golden Gloves Champ</div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE BAR -->
+<div class="style-bar">
+  <span class="style-label">Specialties</span>
+  <span class="style-badge">American Traditional</span>
+  <span class="style-badge">Neo-Traditional</span>
+  <span class="style-badge">New School</span>
+  <span class="style-badge">Anime-Inspired</span>
+  <span class="style-badge">Color Realism</span>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="work">
+  <div class="section-eyebrow fade-up">Portfolio</div>
+  <h2 class="section-title fade-up">Tattoos That<br/>Speak for Themselves</h2>
+
+  <div class="gallery-grid">
+    <!-- Gallery items — replace src="" with actual image paths when hosting -->
+    <div class="gallery-item fade-up">
+      <img src="https://placehold.co/600x600/1a0a0a/e8a020?text=Jigglypuff+Swirl" alt="Neo-traditional Jigglypuff tattoo" onerror="this.style.display='none';this.parentNode.querySelector('.gallery-placeholder').style.display='flex'" />
+      <div class="gallery-placeholder gp-5" style="display:none; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.4);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">Neo-Traditional</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-placeholder gp-1" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">New School</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-placeholder gp-4" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">American Traditional</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-placeholder gp-3" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">Color Work</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-placeholder gp-2" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">Anime-Inspired</span></div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-placeholder gp-6" style="display:flex; position:absolute;inset:0;align-items:center;justify-content:center;">
+        <span style="font-family:Oswald;letter-spacing:2px;font-size:0.8rem;color:rgba(255,255,255,0.3);text-transform:uppercase;">Add Photo</span>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-tag">Neo-Traditional</span></div>
+    </div>
+  </div>
+  <p style="margin-top:24px; font-size:0.85rem; color:var(--muted); text-align:center;">
+    📸 Drop in your tattoo photos to replace the placeholder tiles above
+  </p>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-visual fade-up">
+    <div class="about-frame">
+      <div class="about-frame-inner">
+        <div class="about-initials">MT</div>
+        <p style="font-family:Oswald;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-align:center;">
+          Add artist photo here
+        </p>
+      </div>
+    </div>
+    <div class="about-badge">
+      Golden Gloves<br/>Champion<br/>Turned Artist
+    </div>
+  </div>
+  <div class="about-text fade-up">
+    <div class="section-eyebrow">The Artist</div>
+    <div class="gold-line"></div>
+    <h2 class="section-title">Moe Tartt</h2>
+    <br/>
+    <p>
+      <strong>Moe Tartt brings real power to The Grounded Art Collective.</strong> Before tattooing, he was a Golden Gloves boxing champion. He learned focus, grit, and discipline in the ring — and now he puts that same fire into every tattoo he makes.
+    </p>
+    <p>
+      He didn't lose the fighter mindset. He just switched from gloves to a tattoo machine.
+    </p>
+    <p>
+      Moe's style mixes <strong>American Traditional, Neo-Traditional, and New School</strong>. His work is bold, bright, and full of life. Thick lines. Strong colors. Big energy. His tattoos look like they have their own heartbeat.
+    </p>
+    <p>
+      He's inspired by anime and illustrative art, and he's always leveling up. Every piece feels fresh — part classic, part modern, all Moe.
+    </p>
+    <div class="about-highlight">
+      "His books fill up fast because his work speaks for itself."
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="form-section" id="book">
+  <div class="form-intro fade-up">
+    <div class="section-eyebrow">Get Inked</div>
+    <div class="gold-line"></div>
+    <h2 class="section-title">Book Your<br/>Session</h2>
+    <p>
+      Ready to get something bold and built to last? Fill out the form and Moe will reach out to talk through your idea, size, placement, and schedule a date.
+    </p>
+    <p class="warning">⚡ Spots fill fast. Don't sleep on it.</p>
+  </div>
+
+  <div class="fade-up">
+    <form id="bookingForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <label>
+          First Name
+          <input type="text" name="firstName" placeholder="Your first name" required />
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="lastName" placeholder="Your last name" required />
+        </label>
+      </div>
+      <label>
+        Email
+        <input type="email" name="email" placeholder="your@email.com" required />
+      </label>
+      <label>
+        Phone Number
+        <input type="tel" name="phone" placeholder="(315) 000-0000" />
+      </label>
+      <label>
+        What Do You Want Tattooed?
+        <textarea name="idea" placeholder="Describe your vision — subject, style, colors, placement on your body, size…" style="min-height:100px;" required></textarea>
+      </label>
+      <label>
+        Reference Photo(s)
+        <input type="file" name="referencePhotos" accept="image/*" multiple style="padding:10px 16px; cursor:pointer;" />
+        <span style="font-size:0.75rem;color:var(--muted);font-family:Inter,sans-serif;letter-spacing:0;text-transform:none;">Optional — upload any inspiration images (JPG, PNG, etc.)</span>
+      </label>
+      <label>
+        Timeline — When Do You Want This Done?
+        <select name="timeline" required>
+          <option value="" disabled selected>Select a timeframe</option>
+          <option>ASAP — as soon as Moe has an opening</option>
+          <option>Within 1 month</option>
+          <option>Within 2–3 months</option>
+          <option>Within 6 months</option>
+          <option>No rush — flexible</option>
+        </select>
+      </label>
+      <button type="submit" class="form-submit">Send My Booking Request →</button>
+      <p class="form-note">Moe will follow up within 24–48 hours · <a href="https://instagram.com/pro_moe_tattoos" target="_blank" style="color:var(--gold);text-decoration:none;">@pro_moe_tattoos</a></p>
+    </form>
+    <div class="success-msg" id="successMsg">
+      ✔ Request received! Moe will be in touch shortly.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Moe Tartt</div>
+    <div class="footer-sub">45½ E Genesee St, Baldwinsville, NY 13027</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://instagram.com/pro_moe_tattoos" target="_blank">@pro_moe_tattoos</a>
+    <a href="https://www.thegroundedartcollective.com" target="_blank">Studio Site</a>
+    <a href="#work">Gallery</a>
+    <a href="#book">Book Now</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submission — posts to Zapier webhook → Google Sheets
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('bookingForm');
+    const btn = form.querySelector('.form-submit');
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    // Collect text fields
+    const fd = new FormData(form);
+    const data = {
+      firstName:   fd.get('firstName'),
+      lastName:    fd.get('lastName'),
+      email:       fd.get('email'),
+      phone:       fd.get('phone'),
+      idea:        fd.get('idea'),
+      timeline:    fd.get('timeline'),
+      submittedAt: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
+      // Reference photos: list filenames (actual files need Google Drive via Zapier)
+      referencePhotos: Array.from(fd.getAll('referencePhotos'))
+                          .map(f => f.name).filter(Boolean).join(', ') || 'None'
+    };
+
+    try {
+      // 🔧 REPLACE THIS URL with your Zapier "Catch Hook" webhook URL
+      const WEBHOOK_URL = 'YOUR_ZAPIER_WEBHOOK_URL_HERE';
+
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        mode: 'no-cors'
+      });
+
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } catch (err) {
+      btn.textContent = 'Send My Booking Request →';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or DM @pro_moe_tattoos on Instagram.');
+    }
+  }
+</script>
+
+</body>
+</html>
